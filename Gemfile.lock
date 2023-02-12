@@ -224,7 +224,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.2)
-  dotenv-rails (~> 2.1, >= 2.1.1)
+  dotenv-rails
   importmap-rails
   jbuilder
   pg (~> 1.1)

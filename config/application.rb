@@ -18,5 +18,15 @@ module RailsAndMandrill
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # SMTP settings for Mandrill
+    ActionMailer::Base.smtp_settings = {
+      :address            => ENV['SMTP_ADDRESS'],
+      :port               => 587,
+      :user_name          => ENV['SMTP_USERNAME'],
+      :password           => ENV['SMTP_PASSWORD'],
+      :authentication     => 'login',
+    }
+    ActionMailer::Base.delivery_method = :smtp
   end
 end
