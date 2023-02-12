@@ -1,34 +1,37 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+<div class="flex items-center justify-center w-full h-screen bg-gray-100">
+  <div>
+    <h2 class="text-center text-xl mb-3 font-bold">Sign up</h2>
+    <div class="w-96 max-w-xs">
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="field mb-4">
+          <%= f.label :name, class: 'block text-gray-700 text-sm font-bold mb-2' %>
+          <%= f.email_field :name, autofocus: true, autocomplete: "name", class: 'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-teal-500' %>
+        </div>
+        <div class="field mb-4">
+          <%= f.label :email, class: 'block text-gray-700 text-sm font-bold mb-2' %>
+          <%= f.email_field :email, autocomplete: "email", class: 'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-teal-500' %>
+        </div>
+        <div class="field mb-2">
+          <%= f.label :password, class: 'block text-gray-700 text-sm font-bold mb-2' %>
+          <%= f.password_field :password, autocomplete: "new-password", class: 'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-teal-500' %>
+          <% if @minimum_password_length %>
+          <em class="text-xs">*(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+        </div>
+        <div class="field mb-5">
+          <%= f.label :password_confirmation, class: 'block text-gray-700 text-sm font-bold mb-2' %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-teal-500' %>
+        </div>
+        <div class="flex flex-col items-center justify-between">
+          <%= f.submit "Sign up", class: 'w-full bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outlin mb-3 cursor-pointer' %>
+          <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+      </div>
+      <p class="text-center text-gray-500 text-xs">
+        &copy;2020 Acme Corp. All rights reserved.
+      </p>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

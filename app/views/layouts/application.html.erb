@@ -5,16 +5,58 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <% if user_signed_in? %>
-    <p>Hello, <%= current_user.name %> - <%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
+    <% if user_signed_in? %>    
+    <nav class="bg-teal-500 p-6 mb-10">
+      <div class="container mx-auto flex items-center justify-between flex-wrap">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <p class="text-xl">Hello, <%= current_user.name %></p>
+        </div>
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+          <div class="text-sm lg:flex-grow">
+            <a href="/app" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Home
+            </a>
+            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Dashboard
+            </a>
+          </div>
+          <div>
+            <%= button_to "Sign out", destroy_user_session_path, :method => :delete, class:'inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0'  %>
+          </div>
+        </div>
+      </div>
+    </nav>
     <% else %>
-    <p><%= link_to "Sign In", new_user_session_path %> - <%= link_to "Register", new_user_registration_path %></p>
+      <%# if !current_page?(:controller => 'devise/sessions', :action => 'new') && !current_page?(:controller => 'registrations', :action => 'new')  %>
+      <nav class="bg-teal-500 p-6 mb-10 w-full fixed">
+        <div class="container mx-auto flex items-center justify-between flex-wrap">
+          <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <p class="text-xl">Hello, My Friend </p>
+          </div>
+          <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+            <div class="text-sm lg:flex-grow">
+              <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                Home
+              </a>
+              <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                Dashboard
+              </a>
+            </div>
+            <div>
+              <%= link_to "Sign In", new_user_session_path, class:'inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0' %>
+              <%= link_to "Register", new_user_registration_path, class:'inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0' %>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <%# end %>
     <% end %>
 
     <%= yield %>
