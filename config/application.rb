@@ -21,11 +21,12 @@ module RailsAndMandrill
 
     # SMTP settings for Mandrill
     ActionMailer::Base.smtp_settings = {
-      :address            => ENV['SMTP_ADDRESS'],
-      :port               => 587,
-      :user_name          => ENV['SMTP_USERNAME'],
-      :password           => ENV['SMTP_PASSWORD'],
-      :authentication     => 'login',
+      :address                => ENV['SMTP_ADDRESS'],
+      :port                   => 587,
+      :user_name              => ENV['SMTP_USERNAME'],
+      :password               => ENV['SMTP_PASSWORD'],
+      :authentication         => 'plain',
+      :enable_starttls_auto   => true,
     }
     ActionMailer::Base.delivery_method = :smtp
   end

@@ -45,6 +45,12 @@ gem "bootsnap", require: false
 # Flexible authentication solution for Rails with Warden. [https://github.com/heartcombo/devise]
 gem 'devise', '~> 4.2'
 
+# A Ruby API library for the Mandrill email as a service platform. [https://rubygems.org/gems/mandrill-api/versions/1.0.53?locale=pt-BR]
+# gem 'mandrill-api', '~> 1.0', '>= 1.0.53'
+
+# The official Ruby client library for the Mailchimp Trainsactional API [https://github.com/mailchimp/mailchimp-transactional-ruby/]
+gem 'MailchimpTransactional', '~> 1.0', '>= 1.0.23'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
