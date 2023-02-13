@@ -11,9 +11,12 @@ class WelcomeMailer < ActionMailer::Base
           {
             'template_name' => 'welcome',
             'template_content' => [{}],
-            'merge_vars' => [{
-              FIRST_NAME: user.name
-            }],
+            'global_merge_vars' => [
+              { 
+                name: 'email', 
+                content: user.email 
+              }
+            ],
             'message' => {
               from_email: "rafael.sales@salescreations.com.br",
               subject: "👋 Welcome to the APP #{ user.name }!",
