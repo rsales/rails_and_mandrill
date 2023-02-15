@@ -4,4 +4,6 @@ class HomeController < ApplicationController
       redirect_to '/app'
     end
   end
+  def about
+  end
 end
